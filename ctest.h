@@ -118,11 +118,7 @@ static char *ctest__get_timestamp() {
   time_t rawtime;
   struct tm *timeinfo;
 
-  char *buffer = (char *)malloc(9 * sizeof(char)); // HH:MM:SS + null terminator
-  if (buffer == NULL) {
-    fprintf(stderr, "ERROR: Could not allocate memory for timestamp!\n");
-    exit(1);
-  }
+  static char buffer[9]; // HH:MM:SS + null terminator
 
   time(&rawtime);
   timeinfo = localtime(&rawtime);
